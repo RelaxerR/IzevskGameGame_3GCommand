@@ -9,8 +9,8 @@ public class GameVariables : MonoBehaviour
 
     public static bool LevelRunning;
 
-    private static int LevelNumber;
-    private static int MoneyCount;
+    public int LevelNumber { get; private set; }
+    public int MoneyCount { get; private set; }
 
     private void Awake () {
         GameController.Instance.LevelStartedEvent += LevelStarted;
