@@ -14,9 +14,9 @@ public class UI_Controller : MonoBehaviour
 
     }
     private void Start () {
-        //GameController.Instance.LevelStartedEvent += LevelStarted;
-        //GameController.Instance.LevelEndedEvent += LevelEnded;
         DisactivePanels ();
+        GameController.Instance.LevelStartedEvent += LevelStarted;
+        GameController.Instance.LevelEndedEvent += LevelEnded;
     }
     private void OnDestroy () {
         GameController.Instance.LevelStartedEvent -= LevelStarted;
@@ -38,7 +38,7 @@ public class UI_Controller : MonoBehaviour
 
     private void DisactivePanels () {
         MenuPanel.SetActive (false);
-        GamePanel.SetActive (false);
+        GamePanel.SetActive (true);
         GameWinPanel.SetActive (false);
         GamePanel.SetActive (false);
     }

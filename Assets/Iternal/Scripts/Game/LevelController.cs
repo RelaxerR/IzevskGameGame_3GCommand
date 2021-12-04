@@ -16,17 +16,16 @@ public class LevelController : MonoBehaviour
     [SerializeField] GameObject _playerPrefab;
 
     private void Awake () {
-        
+        Instance = this;
     }
     private void Start () {
-        Instance = this;
         LevelStarted ();
     }
 
     private void LevelStarted () {
         var levelNum = GameVariables.Instance.LevelNumber;
 
-        _playersCount = (int) levelNum / 10;
+        _playersCount = (int) 1 / 10;
         _beerCost = 0.1f;
         _beerEnergy = 0.4f;
         _vodkaCost = 0.01f;

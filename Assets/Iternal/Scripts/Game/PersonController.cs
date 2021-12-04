@@ -10,6 +10,9 @@ public class PersonController : MonoBehaviour
     [SerializeField] private Slider _enegryBar;
     [SerializeField] private Slider _moneyBar;
 
+    private void Start () {
+        _money = 1f;
+    }
     private void FixedUpdate () {
         _energy -= _energyLost;
         UpdateBars ();
@@ -21,6 +24,8 @@ public class PersonController : MonoBehaviour
 
         _money -= money;
         _energy += energy;
+
+        Debug.Log ($"money: {_money} | energy: {_energy}");
     }
     
     private void UpdateBars () {

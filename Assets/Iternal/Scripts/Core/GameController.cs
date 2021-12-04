@@ -9,11 +9,10 @@ public class GameController : MonoBehaviour
     public event Action<bool> LevelEndedEvent;
 
     private void Awake () {
-        
+        Instance = this;
     }
     void Start()
     {
-        Instance = this;
         LevelStartedEvent?.Invoke ();
     }
 
