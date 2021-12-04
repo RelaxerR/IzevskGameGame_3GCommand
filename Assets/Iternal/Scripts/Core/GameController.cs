@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        
+        LevelStartedEvent?.Invoke ();
     }
 
     void Update()

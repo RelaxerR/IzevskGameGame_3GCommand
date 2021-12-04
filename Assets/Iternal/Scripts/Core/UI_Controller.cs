@@ -42,7 +42,10 @@ public class UI_Controller : MonoBehaviour
         GamePanel.SetActive (false);
     }
 
-    public void DrinkChanged (bool beer) {
-        
+    public void DrinkChanged () {
+        if (BeerToggle.isOn)
+            LevelController.Instance.BeerChosed = true;
+        else
+            LevelController.Instance.BeerChosed = false;
     }
 }

@@ -11,7 +11,14 @@ public class LevelController : MonoBehaviour
     public float _vodkaCost { get; private set; }
     public float _vodkaEnergy { get; private set; }
     public float _vodkaEnergyInterval { get; private set; }
-    public bool BeerChosed { get; private set; }
+    public bool BeerChosed;
+
+    [SerializeField] GameObject _playerPrefab;
+
+    private void Start () {
+        Instance = this;
+        LevelStarted ();
+    }
 
     private void LevelStarted () {
         var levelNum = GameVariables.Instance.LevelNumber;
@@ -21,6 +28,8 @@ public class LevelController : MonoBehaviour
         _beerEnergy = 0.4f;
         _vodkaCost = 0.01f;
         _vodkaEnergy = 0.4f;
+
+        SpawnPlayers ();
     }
     public void GetDrink (out float cost, out float energy) {
         if (BeerChosed)
@@ -35,7 +44,10 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    private void Start () {
-        Instance = this;
+    private void SpawnPlayers () {
+        for (int i = 0; i < _playersCount; i++)
+        {
+            Instantiate (_playerPrefab, new Vector3 (0, 0, 0), Quaternion.identity, this.transform);
+        }
     }
 }
