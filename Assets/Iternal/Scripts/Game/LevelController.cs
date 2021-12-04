@@ -15,6 +15,9 @@ public class LevelController : MonoBehaviour
 
     [SerializeField] GameObject _playerPrefab;
 
+    private void Awake () {
+        
+    }
     private void Start () {
         Instance = this;
         LevelStarted ();

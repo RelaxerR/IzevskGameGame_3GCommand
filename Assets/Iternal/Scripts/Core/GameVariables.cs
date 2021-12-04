@@ -9,13 +9,15 @@ public class GameVariables : MonoBehaviour
     public int LevelNumber { get; private set; }
     public int MoneyCount { get; private set; }
 
-
     private void Awake () {
-        GameController.Instance.LevelStartedEvent += LevelStarted;
-        GameController.Instance.LevelEndedEvent += LevelEnded;
+        
     }
     private void Start()
     {
+        Instance = this;
+
+        //GameController.Instance.LevelStartedEvent += LevelStarted;
+        //GameController.Instance.LevelEndedEvent += LevelEnded;
         LoadVariables ();
     }
     private void OnDestroy () {

@@ -11,10 +11,11 @@ public class UI_Controller : MonoBehaviour
     [SerializeField] private Toggle VodkaToggle;
 
     private void Awake () {
-        GameController.Instance.LevelStartedEvent += LevelStarted;
-        GameController.Instance.LevelEndedEvent += LevelEnded;
+
     }
     private void Start () {
+        //GameController.Instance.LevelStartedEvent += LevelStarted;
+        //GameController.Instance.LevelEndedEvent += LevelEnded;
         DisactivePanels ();
     }
     private void OnDestroy () {
