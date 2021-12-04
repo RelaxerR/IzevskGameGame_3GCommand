@@ -1,16 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static GameController Instance { get; private set; }
+
+    public event Action LevelStartedEvent;
+    public event Action<bool> LevelEndedEvent;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         

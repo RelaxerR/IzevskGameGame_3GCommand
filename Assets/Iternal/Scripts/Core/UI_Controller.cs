@@ -1,18 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UI_Controller : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] private GameObject MenuPanel;
+    [SerializeField] private GameObject GamePanel;
+    [SerializeField] private GameObject GameWinPanel;
+    [SerializeField] private GameObject GameLoosePanel;
+
+    private void Awake () {
+        GameController.Instance.LevelStartedEvent += LevelStarted;
+        GameController.Instance.LevelEndedEvent += LevelEnded;
+    }
+    private void Start () {
+        DisactivePanels ();
+    }
+    private void OnDestroy () {
+        GameController.Instance.LevelStartedEvent -= LevelStarted;
+        GameController.Instance.LevelEndedEvent -= LevelEnded;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void LevelStarted () {
+        MenuPanel.SetActive (false);
+        GamePanel.SetActive (true);
+    }
+    private void LevelEnded(bool win) {
+        GamePanel.SetActive (false);
+
+        if (win)
+            GameWinPanel.SetActive (true);
+        else
+            GamePanel.SetActive (true);
+    }
+
+    private void DisactivePanels () {
+        MenuPanel.SetActive (false);
+        GamePanel.SetActive (false);
+        GameWinPanel.SetActive (false);
+        GamePanel.SetActive (false);
     }
 }
