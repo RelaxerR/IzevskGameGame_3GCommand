@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameVariables : MonoBehaviour
@@ -11,6 +8,7 @@ public class GameVariables : MonoBehaviour
 
     public int LevelNumber { get; private set; }
     public int MoneyCount { get; private set; }
+
 
     private void Awake () {
         GameController.Instance.LevelStartedEvent += LevelStarted;

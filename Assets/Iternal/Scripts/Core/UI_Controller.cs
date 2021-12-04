@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_Controller : MonoBehaviour
 {
@@ -6,6 +7,8 @@ public class UI_Controller : MonoBehaviour
     [SerializeField] private GameObject GamePanel;
     [SerializeField] private GameObject GameWinPanel;
     [SerializeField] private GameObject GameLoosePanel;
+    [SerializeField] private Toggle BeerToggle;
+    [SerializeField] private Toggle VodkaToggle;
 
     private void Awake () {
         GameController.Instance.LevelStartedEvent += LevelStarted;
@@ -37,5 +40,9 @@ public class UI_Controller : MonoBehaviour
         GamePanel.SetActive (false);
         GameWinPanel.SetActive (false);
         GamePanel.SetActive (false);
+    }
+
+    public void DrinkChanged (bool beer) {
+        
     }
 }
