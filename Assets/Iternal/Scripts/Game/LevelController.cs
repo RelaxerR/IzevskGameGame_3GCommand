@@ -38,10 +38,18 @@ public class LevelController : MonoBehaviour
 
         _playersCount = (int) levelNum / 10;
         if (_playersCount <= 0) _playersCount = 1;
-        _beerCost = 0.1f;
+        if (_playersCount > 6) _playersCount = 6;
+        _beerCost = levelNum / 100;
+        if (_beerCost > 0.2f) _beerCost = 0.2f;
+        if (_beerCost < 0.05f) _beerCost = 0.05f;
         _beerEnergy = 0.4f;
-        _vodkaCost = 0.01f;
+        _vodkaCost = levelNum / 100 + 0.1f;
+        if (_vodkaCost < 0.05f) _vodkaCost = 0.05f;
+        if (_vodkaCost > 0.1f) _vodkaCost = 0.1f;
         _vodkaEnergy = 0.4f;
+        _levelProgressTick = 1 - levelNum / 50;
+        if (_levelProgressTick < 0.01f) _levelProgressTick = 0.01f;
+        if (_levelProgressTick > 0.1f) _levelProgressTick = 0.1f;
 
         _levelProgress = 0;
 
@@ -85,7 +93,7 @@ public class LevelController : MonoBehaviour
     private IEnumerator LevelProgressTick () {
         while (_levelProgress <= 1)
         {
-            yield return new WaitForSeconds (0.1f);
+            yield return new WaitForSeconds (1f);
             _levelProgress += _levelProgressTick;
             LevelProgressAddedEvent?.Invoke (_levelProgress);
         }
